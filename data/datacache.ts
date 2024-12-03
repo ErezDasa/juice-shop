@@ -2,6 +2,24 @@
  * Copyright (c) 2014-2024 Bjoern Kimminich & the OWASP Juice Shop contributors.
  * SPDX-License-Identifier: MIT
  */
+import express from "express";
+import mysql from "mysql";
+
+const app = express();
+app.use(express.json());
+
+// Hardcoded database credentials (vulnerability: sensitive data exposed)
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "password123", // Vulnerable: Hardcoded password
+    database: "example_db",
+});
+
+// Vulnerable login endpoint (SQL injection and lack of password hashing)
+ap
+
+
 
 import type { BasketItemModel } from 'models/basketitem'
 import type { ChallengeModel } from 'models/challenge'
